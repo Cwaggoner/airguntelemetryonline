@@ -3190,13 +3190,6 @@
         steps.push('Clean the barrel with a proper airgun rod and nylon brush or felt pellets. Let it dry completely.');
         steps.push('Apply only a few drops of silicone oil to the piston seal area if the manual allows. Excess oil can cause dieseling.');
         steps.push('Do not use petroleum oils or WD-40 on seals or inside the compression chamber.');
-      } else if (name.includes('sig') && name.includes('p320')) {
-        steps.push('Place one drop of Pellgun oil or silicone-based airgun oil on the tip of every few 12g CO2 cartridges before inserting.');
-        steps.push('Never use petroleum-based oils, WD-40, or motor oil — they swell and destroy the CO2 seals.');
-        steps.push('Wipe the exterior (metal slide and polymer frame) after each session. Keep the Picatinny rail and sights free of residue.');
-        steps.push('Clean the rifled barrel gently with soft patches when groups open. Avoid aggressive solvents.');
-        steps.push('The 30-round rotary magazine should be kept clean and free of debris. Do not over-lubricate the magazine.');
-        steps.push('Store with the magazine removed and the CO2 cartridge removed after use. Follow the owner’s manual for the full-blowback slide care.');
       } else if (pp === 'co2' || pp === 'co₂') {
         steps.push('Place one drop of Pellgun oil or silicone-based airgun oil on the tip of every few CO2 cartridges before piercing.');
         steps.push('Never use petroleum-based oils, WD-40, or motor oil — they destroy CO2 seals.');
@@ -3219,7 +3212,6 @@
       if (name.includes('benjamin') && name.includes('bulldog')) return 'images/benjamin-bulldog.jpg';
       if (name.includes('daisy') && (name.includes('red ryder') || name.includes('redryder'))) return 'images/daisy-red-ryder.jpg';
       if (name.includes('gamo') && (name.includes('p-430') || name.includes('p430'))) return 'images/gamo-p430.jpg';
-      if (name.includes('sig') && name.includes('p320')) return 'images/sig-p320.jpg';
       if (name.includes('crosman') && name.includes('2240')) return 'images/crosman-2240.jpg';
       if (name.includes('gamo') && name.includes('big cat')) return 'images/gamo-big-cat.jpg';
       if (name.includes('hatsan') && name.includes('edge')) return 'images/hatsan-edge.jpg';
@@ -3227,6 +3219,20 @@
       if ((gun.powerplant || '').toLowerCase() === 'pcp') return 'images/gamo-urban.jpg';
       if ((gun.platform || '').toLowerCase() === 'pistol') return 'images/crosman-2240.jpg';
       return 'images/gamo-big-cat.jpg';
+    }
+
+
+    function getGunPrice(gun) {
+      const name = (gun.name || '').toLowerCase();
+      if (name.includes('urban')) return '$325';
+      if (name.includes('bulldog')) return '$850';
+      if (name.includes('red ryder') || name.includes('redryder')) return '$60';
+      if (name.includes('p-430') || name.includes('p430')) return '$55';
+      if (name.includes('2240')) return '$90';
+      if (name.includes('big cat')) return '$150';
+      if (name.includes('hatsan') && name.includes('edge')) return '$130';
+      if (name.includes('sig') && name.includes('p320')) return '$130';
+      return null;
     }
 
     function renderPrecisionMaintenance() {
@@ -3256,7 +3262,8 @@
                   ${steps.map(s => `<li>${escapeHtml(s)}</li>`).join('')}
                 </ul>
               </div>
-              <div style="flex:0 0 160px; max-width:160px;">
+              <div style="flex:0 0 160px; max-width:160px; text-align:center;">
+                ${(() => { const p = getGunPrice(g); return p ? `<div style="font-size:13px; font-weight:700; color:#39FF14; margin-bottom:6px; letter-spacing:0.3px;">${p}</div>` : ''; })()}
                 <img src="${imgSrc}" alt="${escapeHtml(g.name)}" 
                      style="width:100%; height:120px; object-fit:contain; background:#0b1120; border-radius:12px; border:1px solid #1e293b; padding:6px; display:block;" />
               </div>
