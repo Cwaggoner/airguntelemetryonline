@@ -2067,6 +2067,20 @@
             </div>
           </div>
         </div>
+
+        <!-- Manufacturer Maintenance Procedures for Guns in Garage -->
+        <div class="card stack-sm">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title emerald">Manufacturer Maintenance Procedures</h2>
+              <div class="card-subtitle">Procedures aligned with manufacturer guidance for each gun currently in your garage</div>
+            </div>
+          </div>
+          <p class="text-muted" style="font-size:12.5px; margin-bottom:10px;">
+            Always follow the specific manual for your model. The steps below summarize common manufacturer recommendations by powerplant and known models. Never introduce petroleum-based lubricants into high-pressure PCP systems. When in doubt, consult the manufacturer or a qualified technician.
+          </p>
+          <div id="precision-maintenance-list" class="stack-md"></div>
+        </div>
       </section>
 
     </main>
@@ -3135,6 +3149,91 @@
       }, 3200);
     }
 
+
+    /* =========================================================================
+       PRECISION TAB: MANUFACTURER MAINTENANCE BY GUN
+       ========================================================================= */
+    function getMaintenanceForGun(gun) {
+      const name = (gun.name || '').toLowerCase();
+      const pp = (gun.powerplant || '').toLowerCase();
+      const steps = [];
+
+      if (name.includes('gamo') && name.includes('urban')) {
+        steps.push('Wipe external metal and stock with a lightly oiled cloth after use. Avoid silicone-containing oils on metal finishes.');
+        steps.push('Keep fill probe O-rings lightly greased with the recommended silicone grease. Fill to no more than 232 bar (best performance often around 195–200 bar).');
+        steps.push('Store with the reservoir pressurized (at least ~70 bar / 1000 psi) to keep valves seated.');
+        steps.push('Clean the barrel with an appropriate airgun cleaning kit (pull-through or rod with patches). Never use petroleum oil inside the barrel or breech.');
+        steps.push('If the bolt probe sticks after storage, gently ease it and apply a tiny smear of Molycote grease to the O-ring.');
+        steps.push('Have the rifle inspected periodically by a competent technician. Do not disassemble the pressurized reservoir.');
+      } else if (name.includes('benjamin') && name.includes('bulldog')) {
+        steps.push('Lubricate the breech O-ring and bolt tip with Crosman RMCOIL approximately every 100 shots.');
+        steps.push('Apply graphite moly grease to the bolt mechanism sliding surfaces approximately every 200 shots.');
+        steps.push('Clean the barrel periodically with the included Bore-tips or soft cotton patches from the muzzle end. Avoid wire brushes that can damage the breech O-ring.');
+        steps.push('A light application of Crosman Pellgun Oil followed by a dry swab can help control lead fouling. Do not over-lubricate.');
+        steps.push('CRITICAL: Keep all petroleum-based lubricants away from the fill nipple and high-pressure reservoir. Use only recommended products.');
+        steps.push('Store the airgun charged with air. Follow the owner’s manual for fill limits and valve care.');
+      } else if (name.includes('daisy') && (name.includes('red ryder') || name.includes('redryder'))) {
+        steps.push('Add two drops of 20-weight motor oil in the oil hole every 500–1000 shots. Do not use light household oils.');
+        steps.push('Wipe the exterior with a soft clean cloth. Keep screws and sights wiped with a lightly oiled cloth to prevent rust.');
+        steps.push('Clean the barrel only when needed with a proper cleaning rod and soft patches. Avoid aggressive solvents.');
+        steps.push('Store unloaded in a clean, dry place.');
+        steps.push('Do not disassemble. If the gun requires internal service, contact Daisy or a qualified repair center.');
+      } else if (pp === 'pcp') {
+        steps.push('Wipe exterior surfaces after each session. Use only manufacturer-approved or silicone-safe products on metal.');
+        steps.push('Condition fill-probe and port O-rings with the recommended silicone grease sparingly.');
+        steps.push('Clean the barrel with a pull-through or soft patches when accuracy declines. Never use petroleum solvents or oils in the high-pressure system.');
+        steps.push('Store with residual pressure in the reservoir (follow model-specific guidance) so valves stay seated.');
+        steps.push('Never introduce petroleum-based lubricants into the fill system or reservoir.');
+      } else if (pp === 'springer' || pp === 'spring') {
+        steps.push('Wipe external metal with a lightly oiled cloth to prevent rust. Keep oil off wood stocks.');
+        steps.push('Lubricate pivot points and cocking linkage sparingly with the manufacturer’s recommended oil or silicone oil.');
+        steps.push('Clean the barrel with a proper airgun rod and nylon brush or felt pellets. Let it dry completely.');
+        steps.push('Apply only a few drops of silicone oil to the piston seal area if the manual allows. Excess oil can cause dieseling.');
+        steps.push('Do not use petroleum oils or WD-40 on seals or inside the compression chamber.');
+      } else if (pp === 'co2' || pp === 'co₂') {
+        steps.push('Place one drop of Pellgun oil or silicone-based airgun oil on the tip of every few CO2 cartridges before piercing.');
+        steps.push('Never use petroleum-based oils, WD-40, or motor oil — they destroy CO2 seals.');
+        steps.push('Wipe the exterior after use. Clean the barrel gently when accuracy drops.');
+        steps.push('Store with magazines removed. Many manufacturers recommend removing the CO2 cartridge after use.');
+      } else {
+        steps.push('Wipe exterior metal and stock after each session.');
+        steps.push('Clean the barrel with soft patches or a pull-through when groups open. Avoid aggressive solvents and wire brushes.');
+        steps.push('Lubricate moving parts only with products approved for your specific model.');
+        steps.push('Consult the owner’s manual for model-specific fill limits, lubrication points, and storage recommendations.');
+      }
+
+      steps.push('Always confirm the gun is unloaded and on safe before any cleaning or lubrication.');
+      return steps;
+    }
+
+    function renderPrecisionMaintenance() {
+      const container = document.getElementById('precision-maintenance-list');
+      if (!container) return;
+      const guns = state.guns || [];
+      if (guns.length === 0) {
+        container.innerHTML = '<div class="text-muted">No guns in garage. Add guns in the Garage Manager to see model-specific maintenance.</div>';
+        return;
+      }
+
+      container.innerHTML = guns.map(g => {
+        const steps = getMaintenanceForGun(g);
+        const isActive = g.id === state.activeGunId;
+        return `
+          <div class="gun-list-card ${isActive ? 'is-active' : ''}" style="padding:14px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; flex-wrap:wrap; gap:6px;">
+              <div style="font-weight:700; font-size:14px; color:var(--text-main);">
+                ${escapeHtml(g.name)} ${isActive ? '<span class="text-sky mono" style="font-size:11px;">[ACTIVE]</span>' : ''}
+              </div>
+              <span class="spec-badge">${escapeHtml(g.powerplant)} • ${escapeHtml(g.caliber)}</span>
+            </div>
+            <ul style="margin:0; padding-left:18px; display:flex; flex-direction:column; gap:5px; font-size:12.5px; color:var(--text-secondary); line-height:1.45;">
+              ${steps.map(s => `<li>${escapeHtml(s)}</li>`).join('')}
+            </ul>
+          </div>
+        `;
+      }).join('');
+    }
+
     function switchTab(tabId) {
       state.activeTab = tabId;
       saveState();
@@ -3160,6 +3259,8 @@
       } else if (tabId === 'logbook') {
         renderBoreMaintenance();
         renderLogTable();
+      } else if (tabId === 'precision') {
+        renderPrecisionMaintenance();
       }
     }
 
