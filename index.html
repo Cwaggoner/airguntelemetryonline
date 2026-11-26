@@ -2694,8 +2694,27 @@
         pcpMinPsi: null,
         pcpMaxPsi: null,
         boreShots: 0
-      }
-    ];
+      },
+      {
+        id: 'starter_sig_p320_177',
+        name: 'SIG Sauer P320 Airgun .177',
+        platform: 'Pistol',
+        powerplant: 'CO2',
+        caliber: '.177',
+        boreIn: 0.177,
+        magCapacity: 30,
+        sightHeight: 0.60,
+        zeroDistance: 10,
+        turretType: 'FIXED',
+        ammoName: 'Sig Sauer Wraith Ballistic Alloy .177',
+        weight: 6.48,
+        fps: 430,
+        bc: 0.011,
+        cleaningInterval: 400,
+        pcpMinPsi: null,
+        pcpMaxPsi: null,
+        boreShots: 0
+      }];
 
     /* 5 Pre-Loaded Starter Airgun Optics */
     const STARTER_SCOPES = [
@@ -3212,6 +3231,7 @@
       if (name.includes('benjamin') && name.includes('bulldog')) return 'images/benjamin-bulldog.jpg';
       if (name.includes('daisy') && (name.includes('red ryder') || name.includes('redryder'))) return 'images/daisy-red-ryder.jpg';
       if (name.includes('gamo') && (name.includes('p-430') || name.includes('p430'))) return 'images/gamo-p430.jpg';
+      if (name.includes('sig') && name.includes('p320')) return 'images/sig-p320.jpg';
       if (name.includes('crosman') && name.includes('2240')) return 'images/crosman-2240.jpg';
       if (name.includes('gamo') && name.includes('big cat')) return 'images/gamo-big-cat.jpg';
       if (name.includes('hatsan') && name.includes('edge')) return 'images/hatsan-edge.jpg';
