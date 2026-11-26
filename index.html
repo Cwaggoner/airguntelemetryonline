@@ -2616,26 +2616,6 @@
         boreShots: 0
       },
       {
-        id: 'starter_sig_p320_177',
-        name: 'SIG Sauer P320 Airgun .177',
-        platform: 'Pistol',
-        powerplant: 'CO2',
-        caliber: '.177',
-        boreIn: 0.177,
-        magCapacity: 30,
-        sightHeight: 0.60,
-        zeroDistance: 10,
-        turretType: 'FIXED',
-        ammoName: 'Sig Sauer Wraith Ballistic Alloy .177',
-        weight: 6.48,
-        fps: 430,
-        bc: 0.011,
-        cleaningInterval: 400,
-        pcpMinPsi: null,
-        pcpMaxPsi: null,
-        boreShots: 0
-      },
-      {
         id: 'starter_crosman_2240_22',
         name: 'Crosman 2240 CO2 Air Pistol .22',
         platform: 'Pistol',
@@ -3210,6 +3190,13 @@
         steps.push('Clean the barrel with a proper airgun rod and nylon brush or felt pellets. Let it dry completely.');
         steps.push('Apply only a few drops of silicone oil to the piston seal area if the manual allows. Excess oil can cause dieseling.');
         steps.push('Do not use petroleum oils or WD-40 on seals or inside the compression chamber.');
+      } else if (name.includes('sig') && name.includes('p320')) {
+        steps.push('Place one drop of Pellgun oil or silicone-based airgun oil on the tip of every few 12g CO2 cartridges before inserting.');
+        steps.push('Never use petroleum-based oils, WD-40, or motor oil — they swell and destroy the CO2 seals.');
+        steps.push('Wipe the exterior (metal slide and polymer frame) after each session. Keep the Picatinny rail and sights free of residue.');
+        steps.push('Clean the rifled barrel gently with soft patches when groups open. Avoid aggressive solvents.');
+        steps.push('The 30-round rotary magazine should be kept clean and free of debris. Do not over-lubricate the magazine.');
+        steps.push('Store with the magazine removed and the CO2 cartridge removed after use. Follow the owner’s manual for the full-blowback slide care.');
       } else if (pp === 'co2' || pp === 'co₂') {
         steps.push('Place one drop of Pellgun oil or silicone-based airgun oil on the tip of every few CO2 cartridges before piercing.');
         steps.push('Never use petroleum-based oils, WD-40, or motor oil — they destroy CO2 seals.');
