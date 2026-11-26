@@ -1202,7 +1202,7 @@
               <div class="card-header">
                 <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; width:100%;">
                   <h3 class="card-title white" style="margin:0; flex:1;">Trajectory Plot: Line of Sight vs. Bore Axis</h3>
-                  <select id="ballistics-scope-select" class="select" style="min-width:200px; max-width:320px; font-weight:600; color:#ef4444;" aria-label="Select Scope for Ballistics" onchange="selectActiveScope(this.value)"></select>
+                  <select id="ballistics-scope-select" class="select" style="min-width:200px; max-width:320px; font-weight:600; color:#f59e0b;" aria-label="Select Scope for Ballistics" onchange="selectActiveScope(this.value)"></select>
                 </div>
                 <div class="card-subtitle" style="margin-top:2px;">Touch or drag along plot to inspect drop, zero crossings & peak apex</div>
                 <div class="mono" style="display:flex; flex-wrap:wrap; gap:10px; font-size:11px;">
@@ -4386,13 +4386,13 @@
       // Bullseye rings at (360, 270)
       const cx = 360, cy = 270;
       [150, 100, 50].forEach((r, i) => {
-        ctx.strokeStyle = i === 2 ? '#ef4444' : '#0f172a';
+        ctx.strokeStyle = i === 2 ? '#f59e0b' : '#0f172a';
         ctx.lineWidth = 2;
         ctx.beginPath();
         ctx.arc(cx, cy, r, 0, Math.PI * 2);
         ctx.stroke();
       });
-      ctx.fillStyle = '#ef4444';
+      ctx.fillStyle = '#f59e0b';
       ctx.beginPath();
       ctx.arc(cx, cy, 8, 0, Math.PI * 2);
       ctx.fill();
@@ -5086,7 +5086,7 @@
       const scope = getActiveScope();
       const optionHtml = state.scopes.map(s => {
         const sel = s.id === scope.id ? 'selected' : '';
-        const style = s.id === scope.id ? 'style="color:#ef4444; font-weight:700;"' : '';
+        const style = s.id === scope.id ? 'style="color:#f59e0b; font-weight:700;"' : '';
         return `<option value="${s.id}" ${sel} ${style}>${escapeHtml(s.name)} (${escapeHtml(s.magnification)} • ${escapeHtml(s.focalPlane)})</option>`;
       }).join('');
 
@@ -5098,7 +5098,7 @@
       const balSelect = document.getElementById('ballistics-scope-select');
       if (balSelect) {
         balSelect.innerHTML = optionHtml;
-        balSelect.style.color = '#ef4444';
+        balSelect.style.color = '#f59e0b';
       }
 
       const badges = document.getElementById('scope-spec-badges');
