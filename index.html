@@ -1042,6 +1042,7 @@
           <button type="button" class="nav-btn" data-tab="chrono" onclick="switchTab('chrono')">3. Chrono &amp; Timer</button>
           <button type="button" class="nav-btn" data-tab="level" onclick="switchTab('level')">4. Scope Level &amp; Cant</button>
           <button type="button" class="nav-btn" data-tab="logbook" onclick="switchTab('logbook')">5. Range &amp; Maintenance</button>
+          <button type="button" class="nav-btn" data-tab="precision" onclick="switchTab('precision')">6. Precision Fundamentals</button>
         </nav>
 
         <!-- Contained Rounded Active Airgun Garage Card (Flush with 1120px inner container) -->
@@ -1065,7 +1066,7 @@
     </header>
 
     <!-- =====================================================================
-         MAIN CONTENT AREA (5 SYNCHRONIZED TELEMETRY MODULES)
+         MAIN CONTENT AREA (6 SYNCHRONIZED TELEMETRY MODULES)
          ===================================================================== -->
     <main class="main-content">
 
@@ -1867,6 +1868,207 @@
           </div>
         </div>
       </section>
+
+      <!-- ===================================================================
+           TAB 6: PRECISION FUNDAMENTALS (AIRGUN SUB-MOA TO 100 YARDS)
+           =================================================================== -->
+      <section id="tab-precision" class="tab-panel hidden stack-md">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title white">Precision Fundamentals for Airguns</h2>
+              <div class="card-subtitle">Sub-MOA principles adapted for air rifles and pistols out to 100 yards</div>
+            </div>
+          </div>
+          <p class="text-secondary" style="font-size:13.5px; line-height:1.55; margin-bottom:12px;">
+            These are practical, field-tested concepts drawn from widely known precision shooting principles and scaled to the distances and velocities typical of airguns. They are original explanations for airgun use and are not a substitute for formal training or manufacturer data.
+          </p>
+        </div>
+
+        <div class="split-layout ratio-6-6">
+          <div class="card stack-sm">
+            <div class="card-header">
+              <h3 class="card-title">What "Sub-MOA" Means at Airgun Ranges</h3>
+            </div>
+            <p class="text-secondary" style="font-size:13px; line-height:1.5;">
+              One minute of angle (MOA) is approximately 1.047 inches at 100 yards. At 50 yards that same angular unit is half the linear size (~0.52"). At 25 yards it is roughly a quarter-inch. For most airguns the practical goal is a consistent group that is a fraction of an MOA at the distances you actually shoot—commonly 25 to 50 yards, occasionally out to 75–100 yards with high-power PCPs.
+            </p>
+            <div class="kpi-grid-4" style="margin-top:10px;">
+              <div class="kpi-box">
+                <div class="kpi-label">1 MOA @ 25 yd</div>
+                <div class="kpi-val text-sky">~0.26"</div>
+              </div>
+              <div class="kpi-box">
+                <div class="kpi-label">1 MOA @ 50 yd</div>
+                <div class="kpi-val text-sky">~0.52"</div>
+              </div>
+              <div class="kpi-box">
+                <div class="kpi-label">1 MOA @ 75 yd</div>
+                <div class="kpi-val text-sky">~0.79"</div>
+              </div>
+              <div class="kpi-box">
+                <div class="kpi-label">1 MOA @ 100 yd</div>
+                <div class="kpi-val text-sky">~1.05"</div>
+              </div>
+            </div>
+            <p class="text-muted" style="font-size:12px; margin-top:8px;">
+              A 0.4" five-shot group at 50 yards is already under 1 MOA. At 25 yards the same angular precision is a much smaller physical group.
+            </p>
+          </div>
+
+          <div class="card stack-sm">
+            <div class="card-header">
+              <h3 class="card-title emerald">Position and Hold Consistency</h3>
+            </div>
+            <ul class="text-secondary" style="font-size:13px; line-height:1.55; padding-left:18px; display:flex; flex-direction:column; gap:6px;">
+              <li>Use the same body position every shot. Small changes in cheek weld, shoulder pressure, or hand placement move point of impact more than most shooters expect at airgun ranges.</li>
+              <li>Support the forend consistently. Resting on different points of the stock or using different pressure changes how the gun recoils or settles.</li>
+              <li>Follow through. Keep the sight picture after the shot so you can see where the pellet actually went relative to your hold.</li>
+              <li>For PCPs, manage the fill pressure window. Shooting outside the flat part of the curve introduces velocity changes that open groups.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card stack-sm">
+          <div class="card-header">
+            <h3 class="card-title">Zeroing Strategy for 25-100 Yards</h3>
+          </div>
+          <div class="split-layout ratio-6-6">
+            <div>
+              <p class="text-secondary" style="font-size:13px; line-height:1.5; margin-bottom:8px;">
+                Most airgun shooters zero at 25 or 30 yards. This creates a near and far zero with a small trajectory arc in between. Confirm both crossings with the DOPE table in the Ballistics tab rather than assuming a single zero works at every distance.
+              </p>
+              <ul class="text-secondary" style="font-size:13px; line-height:1.5; padding-left:18px; display:flex; flex-direction:column; gap:4px;">
+                <li>Zero in calm conditions with a stable rest.</li>
+                <li>Fire 5-shot groups, not single shots, before dialing.</li>
+                <li>Record the exact fill pressure and pellet used when you zero.</li>
+                <li>Re-confirm zero after cleaning the barrel or changing pellets.</li>
+              </ul>
+            </div>
+            <div class="kpi-box" style="background:var(--bg-inset);">
+              <div class="kpi-label">Practical Airgun Zero Workflow</div>
+              <div class="stack-sm" style="margin-top:8px; font-size:12.5px; color:var(--text-secondary);">
+                <div>1. Confirm scope is level (use Level and Cant tab)</div>
+                <div>2. Shoot a 5-shot group at chosen zero distance</div>
+                <div>3. Measure offset from point of aim</div>
+                <div>4. Dial the correction and re-shoot to verify</div>
+                <div>5. Save the session in the logbook with pellet and pressure</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="split-layout ratio-5-7">
+          <div class="card stack-sm">
+            <div class="card-header">
+              <h3 class="card-title amber">Pellet and Velocity Consistency</h3>
+            </div>
+            <p class="text-secondary" style="font-size:13px; line-height:1.5;">
+              Airguns are sensitive to pellet fit and velocity spread. A 10-15 FPS extreme spread that is acceptable in a centerfire rifle can open groups noticeably at 40-50 yards with a light pellet.
+            </p>
+            <ul class="text-secondary" style="font-size:13px; line-height:1.5; padding-left:18px; display:flex; flex-direction:column; gap:5px; margin-top:6px;">
+              <li>Test 3-5 pellet brands in the same weight class. Small head-size differences change both velocity and point of impact.</li>
+              <li>Use the Chronograph tab to measure average, extreme spread, and standard deviation before calling a pellet accurate.</li>
+              <li>Stay inside the manufacturer's recommended fill range for PCPs. Velocity drop-off outside that window is a common source of vertical stringing.</li>
+              <li>Keep the barrel clean on a consistent schedule. Leading or residue build-up shifts zero more than most shooters expect.</li>
+            </ul>
+          </div>
+
+          <div class="card stack-sm">
+            <div class="card-header">
+              <h3 class="card-title">Environmental Factors at Short Range</h3>
+            </div>
+            <p class="text-secondary" style="font-size:13px; line-height:1.5;">
+              Wind still matters at airgun distances, but the effect is smaller than at long range. A 5 mph crosswind can move a light .177 or .22 pellet several tenths of an inch at 40-50 yards. Light and mirage are less of an issue under 100 yards, but temperature swings affect springers and CO2 guns more than regulated PCPs.
+            </p>
+            <div class="table-wrap" style="margin-top:8px;">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Factor</th>
+                    <th>Typical Effect (Airgun)</th>
+                    <th>What to Do</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Crosswind 5 mph</td>
+                    <td>0.2-0.5" at 50 yd (light pellet)</td>
+                    <td>Hold into wind or wait for calm</td>
+                  </tr>
+                  <tr>
+                    <td>Fill pressure drop</td>
+                    <td>Vertical stringing outside sweet spot</td>
+                    <td>Stay in flat portion of curve</td>
+                  </tr>
+                  <tr>
+                    <td>Temperature swing</td>
+                    <td>Velocity change (springer/CO2)</td>
+                    <td>Re-chrono and re-zero if large</td>
+                  </tr>
+                  <tr>
+                    <td>Scope cant</td>
+                    <td>Horizontal error that grows with range</td>
+                    <td>Use Level and Cant tab to stay plumb</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="card stack-sm">
+          <div class="card-header">
+            <h3 class="card-title white">Practice Methods That Improve Groups</h3>
+          </div>
+          <div class="kpi-grid-4">
+            <div class="kpi-box">
+              <div class="kpi-label">Dry-Fire / Aiming</div>
+              <div class="kpi-sub" style="margin-top:4px;">Practice the same hold and trigger press without pellets. Focus on keeping the reticle still through the break.</div>
+            </div>
+            <div class="kpi-box">
+              <div class="kpi-label">5-Shot Groups</div>
+              <div class="kpi-sub" style="margin-top:4px;">Always measure center-to-center, not extreme edge. Use the Shot-Group analyzer to quantify improvement over time.</div>
+            </div>
+            <div class="kpi-box">
+              <div class="kpi-label">Distance Ladder</div>
+              <div class="kpi-sub" style="margin-top:4px;">Shoot the same pellet at 20, 30, 40, and 50 yards. Record each group and the required hold or dial.</div>
+            </div>
+            <div class="kpi-box">
+              <div class="kpi-label">Log Everything</div>
+              <div class="kpi-sub" style="margin-top:4px;">Pellet, fill pressure, temperature, and group size. Patterns appear only after multiple sessions.</div>
+            </div>
+          </div>
+          <p class="text-muted" style="font-size:12px; margin-top:10px;">
+            Goal example: a repeating 0.35-0.45" five-shot group at 30 yards with a .22 PCP is strong practical accuracy. At 50 yards the same gun producing 0.6-0.8" groups is already performing at a high level for most airgun platforms.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Common Errors That Open Groups</h3>
+          </div>
+          <div class="split-layout ratio-6-6">
+            <ul class="text-secondary" style="font-size:13px; line-height:1.55; padding-left:18px; display:flex; flex-direction:column; gap:6px;">
+              <li>Changing cheek weld or stock contact between shots.</li>
+              <li>Shooting through the end of a PCP fill instead of topping up.</li>
+              <li>Mixing pellet lots or brands without re-zeroing.</li>
+              <li>Ignoring scope cant (even 1-2 degrees shows up at 40+ yards).</li>
+              <li>Judging accuracy from one or two shots instead of consistent groups.</li>
+            </ul>
+            <div class="kpi-box" style="background:var(--bg-inset);">
+              <div class="kpi-label">Quick Diagnostic</div>
+              <div class="stack-sm" style="margin-top:6px; font-size:12.5px; color:var(--text-secondary);">
+                <div>Vertical stringing → usually velocity variation or inconsistent hold</div>
+                <div>Horizontal stringing → wind, cant, or inconsistent forend pressure</div>
+                <div>Group walks over time → barrel fouling or temperature change</div>
+                <div>One flyer per group → often a bad pellet or trigger jerk</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </main>
   </div>
 
