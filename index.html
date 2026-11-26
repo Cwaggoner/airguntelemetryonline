@@ -2616,6 +2616,26 @@
         boreShots: 0
       },
       {
+        id: 'starter_sig_p320_177',
+        name: 'SIG Sauer P320 Airgun .177',
+        platform: 'Pistol',
+        powerplant: 'CO2',
+        caliber: '.177',
+        boreIn: 0.177,
+        magCapacity: 30,
+        sightHeight: 0.60,
+        zeroDistance: 10,
+        turretType: 'FIXED',
+        ammoName: 'Sig Sauer Wraith Ballistic Alloy .177',
+        weight: 6.48,
+        fps: 430,
+        bc: 0.011,
+        cleaningInterval: 400,
+        pcpMinPsi: null,
+        pcpMaxPsi: null,
+        boreShots: 0
+      },
+      {
         id: 'starter_crosman_2240_22',
         name: 'Crosman 2240 CO2 Air Pistol .22',
         platform: 'Pistol',
@@ -2876,17 +2896,6 @@
         pelletShape: 'Wadcutter / Flat',
         headSize: '4.50 mm',
         notes: 'Clean paper-punching wadcutter for Gamo P-430 CO2'
-      },
-      {
-        id: 'starter_ammo_sig_wraith_al_177',
-        brand: 'Sig Sauer',
-        name: 'Wraith Ballistic Alloy .177',
-        caliber: '.177',
-        weight: 6.48,
-        bc: 0.011,
-        pelletShape: 'Domed / Round Nose',
-        headSize: '4.50 mm',
-        notes: 'Lead-free tin alloy • 300-ct • lightweight high-velocity pellet for medium-range shooting'
       },
       {
         id: 'starter_ammo_jsb_exact_844',
@@ -3223,6 +3232,7 @@
       if (name.includes('benjamin') && name.includes('bulldog')) return 'images/benjamin-bulldog.jpg';
       if (name.includes('daisy') && (name.includes('red ryder') || name.includes('redryder'))) return 'images/daisy-red-ryder.jpg';
       if (name.includes('gamo') && (name.includes('p-430') || name.includes('p430'))) return 'images/gamo-p430.jpg';
+      if (name.includes('sig') && name.includes('p320')) return 'images/sig-p320.jpg';
       if (name.includes('crosman') && name.includes('2240')) return 'images/crosman-2240.jpg';
       if (name.includes('gamo') && name.includes('big cat')) return 'images/gamo-big-cat.jpg';
       if (name.includes('hatsan') && name.includes('edge')) return 'images/hatsan-edge.jpg';
