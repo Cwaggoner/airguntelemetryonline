@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Holdovers &amp; Adjustments — Airgun Online Telemetry</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Holdovers &amp; Adjustments</h1>
+      <p>Using angular holds and turret corrections</p>
+    </div>
+  </header>
+  <nav>
+    <div class="container">
+      <a href="index.html">Home</a>
+      <a href="moa-basics.html">MOA Basics</a>
+      <a href="mils-vs-moa.html">Mils vs MOA</a>
+      <a href="holdovers.html" class="active">Holdovers &amp; Adjustments</a>
+      <a href="ballistics.html">Ballistics Fundamentals</a>
+      <a href="telemetry.html">Telemetry Tools</a>
+    </div>
+  </nav>
+  <main class="container">
+    <section class="card">
+      <h2>Holdover vs Dialing</h2>
+      <p>A holdover is an angular correction applied by aiming off the center of the reticle (using a known hash mark or estimated amount). Dialing means turning the elevation or windage turret to move the reticle so the center point is correct for the distance.</p>
+    </section>
+    <section class="card">
+      <h2>Basic Process</h2>
+      <ol>
+        <li>Know your zero distance and the drop/wind value for the target distance (from a ballistic app, dope card, or experience).</li>
+        <li>Convert that linear correction (inches or cm) into angular units (MOA or mils) for the distance.</li>
+        <li>Either dial the required amount or hold the corresponding reticle mark.</li>
+      </ol>
+    </section>
+    <section class="card">
+      <h2>Example (MOA, approximate)</h2>
+      <p>At 300 yards a round drops 12 inches relative to a 100-yard zero. 12 inches at 300 yards is roughly 4 MOA (12 / 3). With 1/4 MOA clicks that is 16 clicks up, or a 4 MOA holdover.</p>
+    </section>
+    <section class="card">
+      <p><em>These are simplified examples. Real dope depends on velocity, BC, altitude, temperature, and other factors. Use verified data for your system.</em></p>
+    </section>
+  </main>
+  <footer><div class="container"><a href="index.html">Home</a></div></footer>
+</body>
+</html>
