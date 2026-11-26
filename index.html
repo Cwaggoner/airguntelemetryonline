@@ -3211,9 +3211,14 @@
       if (name.includes('gamo') && name.includes('urban')) return 'images/gamo-urban.jpg';
       if (name.includes('benjamin') && name.includes('bulldog')) return 'images/benjamin-bulldog.jpg';
       if (name.includes('daisy') && (name.includes('red ryder') || name.includes('redryder'))) return 'images/daisy-red-ryder.jpg';
-      // Fallback by powerplant
+      if (name.includes('gamo') && (name.includes('p-430') || name.includes('p430'))) return 'images/gamo-p430.jpg';
+      if (name.includes('crosman') && name.includes('2240')) return 'images/crosman-2240.jpg';
+      if (name.includes('gamo') && name.includes('big cat')) return 'images/gamo-big-cat.jpg';
+      if (name.includes('hatsan') && name.includes('edge')) return 'images/hatsan-edge.jpg';
+      // Reasonable fallbacks
       if ((gun.powerplant || '').toLowerCase() === 'pcp') return 'images/gamo-urban.jpg';
-      return 'images/daisy-red-ryder.jpg';
+      if ((gun.platform || '').toLowerCase() === 'pistol') return 'images/crosman-2240.jpg';
+      return 'images/gamo-big-cat.jpg';
     }
 
     function renderPrecisionMaintenance() {
