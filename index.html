@@ -1200,9 +1200,12 @@
           <div class="stack-md">
             <div class="card">
               <div class="card-header">
-                <div>
-                  <h3 class="card-title white">Trajectory Plot: Line of Sight vs. Bore Axis</h3>
-                  <div class="card-subtitle">Touch or drag along plot to inspect drop, zero crossings &amp; peak apex</div>
+                <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; width:100%;">
+                  <div>
+                    <h3 class="card-title white" style="margin:0;">Trajectory Plot: Line of Sight vs. Bore Axis</h3>
+                    <div class="card-subtitle">Touch or drag along plot to inspect drop, zero crossings & peak apex</div>
+                  </div>
+                  <select id="ballistics-scope-select" class="select" style="min-width:220px; max-width:340px; font-weight:600; color:#ef4444;" aria-label="Select Scope for Ballistics" onchange="selectActiveScope(this.value)"></select>
                 </div>
                 <div class="mono" style="display:flex; flex-wrap:wrap; gap:10px; font-size:11px;">
                   <span class="text-muted">-- Line of Sight</span>
@@ -5083,12 +5086,21 @@
        ========================================================================= */
     function renderScopeSelectorAndBadges() {
       const scope = getActiveScope();
+      const optionHtml = state.scopes.map(s => {
+        const sel = s.id === scope.id ? 'selected' : '';
+        const style = s.id === scope.id ? 'style="color:#ef4444; font-weight:700;"' : '';
+        return `<option value="${s.id}" ${sel} ${style}>${escapeHtml(s.name)} (${escapeHtml(s.magnification)} • ${escapeHtml(s.focalPlane)})</option>`;
+      }).join('');
+
       const select = document.getElementById('active-scope-select');
       if (select) {
-        select.innerHTML = state.scopes.map(s => {
-          const sel = s.id === scope.id ? 'selected' : '';
-          return `<option value="${s.id}" ${sel}>${escapeHtml(s.name)} (${escapeHtml(s.magnification)} • ${escapeHtml(s.focalPlane)})</option>`;
-        }).join('');
+        select.innerHTML = optionHtml;
+      }
+
+      const balSelect = document.getElementById('ballistics-scope-select');
+      if (balSelect) {
+        balSelect.innerHTML = optionHtml;
+        balSelect.style.color = '#ef4444';
       }
 
       const badges = document.getElementById('scope-spec-badges');
@@ -5115,6 +5127,7 @@
       renderScopeSelectorAndBadges();
       updateSpiritLevelDisplay();
       renderCantSimulator();
+      if (typeof renderBallisticsOutputs === 'function') { renderBallisticsOutputs(); }
       showToast(`Active Optic: ${scope.name}`, 'sky');
     }
 
