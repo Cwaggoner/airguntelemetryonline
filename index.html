@@ -4386,13 +4386,13 @@
       // Bullseye rings at (360, 270)
       const cx = 360, cy = 270;
       [150, 100, 50].forEach((r, i) => {
-        ctx.strokeStyle = i === 2 ? '#f59e0b' : '#0f172a';
+        ctx.strokeStyle = i === 2 ? '#ef4444' : '#0f172a';
         ctx.lineWidth = 2;
         ctx.beginPath();
         ctx.arc(cx, cy, r, 0, Math.PI * 2);
         ctx.stroke();
       });
-      ctx.fillStyle = '#f59e0b';
+      ctx.fillStyle = '#ef4444';
       ctx.beginPath();
       ctx.arc(cx, cy, 8, 0, Math.PI * 2);
       ctx.fill();
@@ -5121,12 +5121,32 @@
       if (!scope) return;
       state.activeScopeId = scope.id;
       state.levelState.tareOffset = scope.tareOffset || 0;
+
+      // Apply the selected scope's geometry to the live ballistics model so the trajectory chart updates
+      if (state.workingBallistics) {
+        state.workingBallistics.sightHeight = Number(scope.sightHeight) || 1.5;
+        state.workingBallistics.turretType = scope.turretType || '0.25_MOA';
+      }
+      const gun = getActiveGun();
+      if (gun) {
+        gun.sightHeight = Number(scope.sightHeight) || gun.sightHeight;
+        gun.turretType = scope.turretType || gun.turretType;
+      }
+
+      // Sync the form fields on the Ballistics tab if they exist
+      const shField = document.getElementById('bal-sight-h');
+      if (shField) shField.value = state.workingBallistics.sightHeight;
+      const turretField = document.getElementById('bal-turret');
+      if (turretField) turretField.value = state.workingBallistics.turretType;
+
       saveState();
       renderScopeSelectorAndBadges();
       updateSpiritLevelDisplay();
       renderCantSimulator();
-      if (typeof renderBallisticsOutputs === 'function') { renderBallisticsOutputs(); }
-      showToast(`Active Optic: ${scope.name}`, 'sky');
+      if (typeof renderBallisticsOutputs === 'function') {
+        renderBallisticsOutputs();
+      }
+      showToast(`Active Optic: ${scope.name} (${scope.sightHeight}" height)`, 'sky');
     }
 
     function applyActiveScopeToBallisticsAndGun() {
